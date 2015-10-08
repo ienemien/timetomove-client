@@ -80,6 +80,21 @@
               }
             }
           }
+        })
+
+        .state('timetomove.new', {
+          url: '/activities/new',
+          views: {
+            'menuContent': {
+              templateUrl: 'templates/activity.html',
+              controller: 'ActivityCtrl as activityControl'
+              }
+            },
+          resolve: {
+            activity: function () {
+              return null;
+            }
+          }
         });
       // if none of the above states are matched, use this as the fallback
       $urlRouterProvider.otherwise('/timetomove/activities');

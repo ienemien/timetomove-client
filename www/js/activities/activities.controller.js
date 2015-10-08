@@ -9,6 +9,7 @@
     var vm = this;
     vm.activities = activities;
     vm.showActivity = showActivity;
+    vm.newActivity = newActivity;
     vm.deleteActivity = deleteActivity;
     vm.confirmDelete = confirmDelete;
 
@@ -17,9 +18,13 @@
       return "/activities/" + id;
     }
 
+    function newActivity() {
+      $state.go('timetomove.new');
+    }
+
     function deleteActivity(id) {
       ActivitiesFactory.delete({id: id});
-      $state.reload();
+      $state.transitionTo($state.current, $stateParams, { reload: true, inherit: false, notify: true });
     }
 
     function confirmDelete(activity) {
