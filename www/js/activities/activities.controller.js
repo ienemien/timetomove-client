@@ -1,9 +1,12 @@
-angular
-  .module('timetomove')
-  .controller('ActivitiesCtrl', ActivitiesController);
+(function () {
+  'use strict';
 
-function ActivitiesController(activities) {
-  var vm = this;
-  vm.activities = activities;
+  angular
+    .module('timetomove')
+    .controller('ActivitiesCtrl', ActivitiesController);
 
-}
+  function ActivitiesController(activities) {
+    var vm = this;
+    vm.activities = activities;
+  }
+})();
