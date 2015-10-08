@@ -1,0 +1,31 @@
+{
+  "name": "timetomove",
+  "version": "1.0.0",
+  "description": "timetomove: An Ionic project",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-concat": "^2.6.0",
+    "gulp-minify-css": "^0.3.0",
+    "gulp-rename": "^1.2.0"
+  },
+  "devDependencies": {
+    "bower": "^1.5.3",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-util": "^3.0.6",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.0.1",
+    "shelljs": "^0.3.0"
+  },
+  "cordovaPlugins": [
+    "cordova-plugin-whitelist",
+    "cordova-plugin-console",
+    "cordova-plugin-device",
+    "cordova-plugin-splashscreen",
+    "ionic-plugin-keyboard"
+  ],
+  "cordovaPlatforms": []
+}

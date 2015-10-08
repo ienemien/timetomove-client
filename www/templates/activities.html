@@ -1,0 +1,10 @@
+<ion-view view-title="Activities">
+  <ion-content>
+  	<ion-list>
+		<ion-item ng-repeat="activity in activitiesControl.activities" on-hold="delete(activity.id)" href="#/timetomove/activities/{{activity.id}}">
+			<h2>{{activity.type}}</h2>
+			<p>{{activity.start | date:'HH:mm:ss'}} - {{activity.end | date:'HH:mm:ss'}}</p>
+		</ion-item>
+	</ion-list>
+  </ion-content>
+</ion-view>

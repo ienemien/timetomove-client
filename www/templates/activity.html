@@ -1,0 +1,28 @@
+<ion-view view-title="Edit Activity">
+  <ion-content>
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Activity</span>
+        <input type="text" value="{{activityControl.activity.type}}">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Start</span>
+        <input type="text" value="{{activityControl.activity.start | date:'dd/MM/yyyy HH:mm:ss'}}">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">End</span>
+        <input type="text" value="{{activityControl.activity.end | date:'dd/MM/yyyy HH:mm:ss'}}">
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Intensity
+        </div>
+        <select>
+          <option>High</option>
+          <option selected>Medium</option>
+          <option>Low</option>
+        </select>
+      </label>
+    </div>
+  </ion-content>
+</ion-view>
