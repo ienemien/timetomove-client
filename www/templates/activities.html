@@ -1,17 +1,17 @@
 <ion-view view-title="Activities">
   <ion-content>
-    <div class="list" show-delete="1">
+    <div class="list" >
       <ion-item ng-if="activitiesControl.activities && activitiesControl.activities.length"
-                ng-repeat="activity in activitiesControl.activities" ng-click="activitiesControl.showActivity(activity.id)">
-        <ion-delete-button class="icon ion-trash-a" on-tap="activitiesControl.confirmDelete(activity)"></ion-delete-button>
+                ng-repeat="activity in activitiesControl.activities">
         <h2>{{activity.type}}</h2>
         <p></p>
         <p>{{activity.start | date:'dd/MM/yyyy HH:mm:ss'}} - {{activity.end | date:'dd/MM/yyyy HH:mm:ss'}}</p>
         <p>{{activity.intensity.description}}</p>
+        <button class="button button-small button-assertive icon ion-trash-a" on-tap="activitiesControl.confirmDelete(activity)"></button>
+        <button class="button button-small button-energized icon ion-edit" on-tap="activitiesControl.showActivity(activity.id)"></button>
       </ion-item>
       <ion-item ng-if="activitiesControl.activities && !activitiesControl.activities.length">
-        No activities found, create one!
-      </ion-item>
+        No activities found, create oneyour first!
     </div>
     <button type="button" class="button new-button button-outline button-energized icon-left ion-plus "
             on-tap="activitiesControl.newActivity()">New</button>

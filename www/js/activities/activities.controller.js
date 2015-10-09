@@ -23,7 +23,7 @@
 
     function deleteActivity(id) {
       ActivitiesFactory.delete({id: id});
-      $state.go('timetomove.activities', $stateParams, { reload: true, inherit: false, notify: true });
+      $state.go($state.current, {}, {reload: true});
     }
 
     function confirmDelete(activity) {
