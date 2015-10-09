@@ -10,9 +10,11 @@
     vm.activity = activity;
     vm.saveActivity = saveActivity;
 
+    alert("In activitycontroller for activity with id" + activity.id);
+
     function saveActivity(activity) {
-      alert('In save activity');
       ActivitiesFactory.save(activity);
+      $state.go('timetomove.activities');
     }
   }
 })();

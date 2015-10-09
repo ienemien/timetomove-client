@@ -14,8 +14,7 @@
     vm.confirmDelete = confirmDelete;
 
     function showActivity(id) {
-      alert("in show activity");
-      return "/activities/" + id;
+      $state.go('timetomove.single', {id: id});
     }
 
     function newActivity() {
@@ -24,7 +23,7 @@
 
     function deleteActivity(id) {
       ActivitiesFactory.delete({id: id});
-      $state.transitionTo($state.current, $stateParams, { reload: true, inherit: false, notify: true });
+      $state.go('timetomove.activities', $stateParams, { reload: true, inherit: false, notify: true });
     }
 
     function confirmDelete(activity) {
