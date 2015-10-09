@@ -67,7 +67,7 @@
           }
         })
 
-        .state('timetomove.single', {
+        .state('timetomove.singleactivity', {
           url: '/activities/:id',
           views: {
             'menuContent': {

@@ -5,8 +5,9 @@
                 ng-repeat="activity in activitiesControl.activities" ng-click="activitiesControl.showActivity(activity.id)">
         <ion-delete-button class="icon ion-trash-a" on-tap="activitiesControl.confirmDelete(activity)"></ion-delete-button>
         <h2>{{activity.type}}</h2>
-
-        <p>{{activity.start | date:'HH:mm:ss'}} - {{activity.end | date:'HH:mm:ss'}}</p>
+        <p></p>
+        <p>{{activity.start | date:'dd/MM/yyyy HH:mm:ss'}} - {{activity.end | date:'dd/MM/yyyy HH:mm:ss'}}</p>
+        <p>{{activity.intensity.description}}</p>
       </ion-item>
       <ion-item ng-if="activitiesControl.activities && !activitiesControl.activities.length">
         No activities found, create one!

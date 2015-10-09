@@ -8,11 +8,11 @@
         </label>
         <label class="item item-input item-stacked-label">
           <span class="input-label">Start</span>
-          <input type="datetime-local" ng-model="activityControl.activity.start">
+          <input type="datetime" value="{{activityControl.activity.start | date:'dd-MM-yyyy HH:mm'}}">
         </label>
         <label class="item item-input item-stacked-label">
           <span class="input-label">End</span>
-          <input type="datetime-local" ng-model="activityControl.activity.end">
+          <input type="datetime"  value="{{activityControl.activity.end | date:'dd-MM-yyyy HH:mm'}}">
         </label>
         <label class="item item-input item-select">
           <span class="input-label">
@@ -26,7 +26,7 @@
         </label>
 
         <div class="new-button">
-          <button class="button button-outline button-energized icon-left ion-plus" on-tap="activityControl.saveActivity(activityControl.activity)">Save</button>
+          <button class="button button-outline button-energized icon-left ion-plus" on-tap="activityControl.saveOrUpdate(activityControl.activity)">Save</button>
         </div>
       </form>
     </div>

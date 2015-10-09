@@ -14,7 +14,7 @@
     vm.confirmDelete = confirmDelete;
 
     function showActivity(id) {
-      $state.go('timetomove.single', {id: id});
+      $state.go('timetomove.singleactivity', {id: id});
     }
 
     function newActivity() {
@@ -27,10 +27,12 @@
     }
 
     function confirmDelete(activity) {
+
       var confirmPopup = $ionicPopup.confirm({
         title: 'Delete Activity',
         template: 'Are you sure you want to delete \'' + activity.type + '\'?'
       });
+
       confirmPopup.then(function(res) {
         if(res) {
           console.log('Delete activity');

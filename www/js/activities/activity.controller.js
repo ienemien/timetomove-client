@@ -5,16 +5,20 @@
     .module('timetomove')
     .controller('ActivityCtrl', ActivityController);
 
-  function ActivityController(activity, ActivitiesFactory) {
+  function ActivityController(activity, ActivitiesFactory, $state) {
     var vm = this;
     vm.activity = activity;
-    vm.saveActivity = saveActivity;
+    vm.saveOrUpdate = saveOrUpdate;
 
-    alert("In activitycontroller for activity with id" + activity.id);
-
-    function saveActivity(activity) {
-      ActivitiesFactory.save(activity);
-      $state.go('timetomove.activities');
+    function saveOrUpdate(activity) {
+      if (activity.id) {
+        ActivitiesFactory.update(activity);
+      }
+      else {
+        ActivitiesFactory.save(activity);
+      }
+      $state.go('timetomove.activities', null, {reload: true, inherit: false, notify: true});
     }
   }
-})();
+})
+();
