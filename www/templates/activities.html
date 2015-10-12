@@ -5,7 +5,7 @@
                 ng-repeat="activity in activitiesControl.activities">
         <h2>{{activity.type}}</h2>
         <p></p>
-        <p>{{activity.start | date:'dd/MM/yyyy HH:mm:ss'}} - {{activity.end | date:'dd/MM/yyyy HH:mm:ss'}}</p>
+        <p>{{activity.start | date:'dd/MM/yyyy HH:mm'}} - {{activity.end | date:'dd/MM/yyyy HH:mm'}}</p>
         <p>{{activity.intensity.description}}</p>
         <button class="button button-small button-assertive icon ion-trash-a" on-tap="activitiesControl.confirmDelete(activity)"></button>
         <button class="button button-small button-energized icon ion-edit" on-tap="activitiesControl.showActivity(activity.id)"></button>
