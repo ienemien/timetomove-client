@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  angular.module('timetomove', ['ionic', 'ngResource'])
+  angular.module('timetomove', ['ionic', 'ngResource', 'ngMessages'])
 
     .constant('ApiEndpoint', {
       url: 'http://localhost:8080/api'
@@ -68,7 +68,7 @@
         })
 
         .state('timetomove.singleactivity', {
-          url: '/activities/:id',
+          url: '/activities/edit/:id',
           views: {
             'menuContent': {
               templateUrl: 'templates/activity.html',
@@ -88,15 +88,15 @@
             'menuContent': {
               templateUrl: 'templates/activity.html',
               controller: 'ActivityCtrl as activityControl'
-              }
-            },
+            }
+          },
           resolve: {
             activity: function () {
-              return null;
+              return {};
             }
           }
         });
-      // if none of the above states are matched, use this as the fallback
+
       $urlRouterProvider.otherwise('/timetomove/activities');
     });
 })();

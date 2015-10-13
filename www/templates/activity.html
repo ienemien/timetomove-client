@@ -3,30 +3,50 @@
     <div class="list">
       <form name="newActivityForm">
         <label class="item item-input item-stacked-label">
-          <span class="input-label">Activity</span>
-          <input type="text" ng-model="activityControl.activity.type">
+          <span class="input-label">Type of activity</span>
+          <input type="text" name="activitytype" required ng-minlength="3" ng-maxlength="60" ng-model="activityControl.activity.type" />
+          <div ng-messages="newActivityForm.activitytype.$error" ng-if="newActivityForm.activitytype.$touched">
+            <span class="assertive" ng-message="required">This field is required.</span>
+            <span class="assertive" ng-message="minlength">Activity type must be at least 3 characters long.</span>
+            <span class="assertive" ng-message="maxlength">Activity type must be at most 60 characters long.</span>
+          </div>
         </label>
         <label class="item item-input item-stacked-label">
           <span class="input-label">Start</span>
-          <input type="datetime-local" ng-model="activityControl.activity.start" placeholder="yyyy-mm-dd hh:mm:ss">
+          <input type="datetime-local" name="start" required
+                 ng-model="activityControl.activity.start" placeholder="yyyy-mm-dd hh:mm">
+          <div ng-messages="newActivityForm.start.$error" ng-if="newActivityForm.start.$touched">
+            <span class="assertive" ng-message="required">This field is required.</span>
+          </div>
         </label>
         <label class="item item-input item-stacked-label">
           <span class="input-label">End</span>
-          <input type="datetime-local" ng-model="activityControl.activity.end" placeholder="yyyy-mm-dd hh:mm:ss">
+          <input type="datetime-local" name="end" required min="{{activityControl.activity.start}}"
+                 ng-model="activityControl.activity.end" placeholder="yyyy-mm-dd hh:mm">
+          <div ng-messages="newActivityForm.end.$error" ng-if="newActivityForm.end.$touched && newActivityForm.start.$touched">
+            <span class="assertive" ng-message="required">This field is required.</span>
+            <span class="assertive" ng-message="min">End should be after start.</span>
+          </div>
         </label>
         <label class="item item-input item-select">
           <span class="input-label">
             Intensity
           </span>
-          <select ng-model="activityControl.activity.intensity.code">
+          <select name="intensity" required ng-model="activityControl.activity.intensity.code">
             <option value="HIGH">High</option>
             <option value="MEDIUM" selected>Medium</option>
             <option value="LOW">Low</option>
           </select>
+          <div ng-messages="newActivityForm.intensity.$error" ng-if="newActivityForm.intensity.$touched">
+            <span class="assertive" ng-message="required">This field is required.</span>
+          </div>
         </label>
-
         <div class="new-button">
-          <button class="button button-outline button-energized icon-left ion-plus" on-tap="activityControl.saveOrUpdate(activityControl.activity)">Save</button>
+          <button class="button button-outline button-energized icon-left ion-plus"
+                  ng-disabled="newActivityForm.$invalid"
+                  on-tap="activityControl.saveOrUpdate(activityControl.activity)">Save</button>
+          <button class="button button-outline button-calm icon-left ion-plus"
+                  on-tap="activityControl.cancel()">Cancel</button>
         </div>
       </form>
     </div>

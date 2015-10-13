@@ -9,6 +9,7 @@
     var vm = this;
     vm.activity = activity;
     vm.saveOrUpdate = saveOrUpdate;
+    vm.cancel = cancel;
 
     function saveOrUpdate(activity) {
       if (activity.id) {
@@ -17,6 +18,10 @@
       else {
         ActivitiesFactory.save(activity);
       }
+      $state.go('timetomove.activities', null, {reload: true, inherit: false, notify: true});
+    }
+
+    function cancel() {
       $state.go('timetomove.activities', null, {reload: true, inherit: false, notify: true});
     }
   }
