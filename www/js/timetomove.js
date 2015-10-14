@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  angular.module('timetomove', ['ionic', 'ngResource', 'ngMessages'])
+  angular.module('timetomove', ['ionic', 'ngResource', 'ngMessages', 'ngCordova'])
 
     .constant('ApiEndpoint', {
       url: 'http://localhost:8080/api'
@@ -67,7 +67,7 @@
           }
         })
 
-        .state('timetomove.singleactivity', {
+        .state('timetomove.editactivity', {
           url: '/activities/edit/:id',
           views: {
             'menuContent': {
@@ -82,7 +82,7 @@
           }
         })
 
-        .state('timetomove.new', {
+        .state('timetomove.newactivity', {
           url: '/activities/new',
           views: {
             'menuContent': {

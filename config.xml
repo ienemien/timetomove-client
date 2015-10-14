@@ -2,10 +2,10 @@
 <widget id="com.ionicframework.timetomoveclient109827" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>timetomove</name>
   <description>
-        An Ionic Framework and Cordova project.
+        An activity tracker and reminder to keep moving.
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+  <author email="info@inekevermeulen.nl" href="http://www.inekevermeulen.nl/timetomove">
+      Ineke Vermeulen
     </author>
   <content src="index.html"/>
   <access origin="*"/>

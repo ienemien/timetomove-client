@@ -8,17 +8,23 @@
   function ActivitiesController(activities, $ionicPopup, $state, ActivitiesFactory) {
     var vm = this;
     vm.activities = activities;
-    vm.showActivity = showActivity;
+    vm.editActivity = editActivity;
     vm.newActivity = newActivity;
     vm.deleteActivity = deleteActivity;
     vm.confirmDelete = confirmDelete;
 
-    function showActivity(id) {
-      $state.go('timetomove.singleactivity', {id: id});
+    function editActivity(id) {
+      $ionicPopup.alert({
+        template: 'In edit activity'
+      });
+      $state.go('timetomove.editactivity', {id: id});
     }
 
     function newActivity() {
-      $state.go('timetomove.new');
+      $ionicPopup.alert({
+        template: 'In new activity'
+      });
+      $state.go('timetomove.newactivity');
     }
 
     function deleteActivity(id) {

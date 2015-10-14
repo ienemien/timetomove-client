@@ -8,12 +8,14 @@
         <p>{{activity.start | date:'dd/MM/yyyy HH:mm'}} - {{activity.end | date:'dd/MM/yyyy HH:mm'}}</p>
         <p>{{activity.intensity.description}}</p>
         <button class="button button-small button-assertive icon ion-trash-a" on-tap="activitiesControl.confirmDelete(activity)"></button>
-        <button class="button button-small button-energized icon ion-edit" on-tap="activitiesControl.showActivity(activity.id)"></button>
+        <button class="button button-small button-positive icon ion-edit" on-tap="activitiesControl.editActivity(activity.id)"></button>
       </ion-item>
       <ion-item ng-if="activitiesControl.activities && !activitiesControl.activities.length">
         No activities found, time to move!
     </div>
-    <button type="button" class="button new-button button-outline button-energized icon-left ion-plus "
-            on-tap="activitiesControl.newActivity()">New</button>
+    <div class="new-button">
+      <button type="button" class="button button-outline button-positive icon-left ion-plus "
+              on-tap="activitiesControl.newActivity()">New</button>
+    </div>
   </ion-content>
 </ion-view>

@@ -14,7 +14,9 @@
         <label class="item item-input item-stacked-label">
           <span class="input-label">Start</span>
           <input type="datetime-local" name="start" required
-                 ng-model="activityControl.activity.start" placeholder="yyyy-mm-dd hh:mm">
+                 ng-model="activityControl.activity.start"
+                 on-tap="activityControl.pickDatetime(activityControl.activity.start)"
+                 placeholder="dd-mm-yyyy hh:mm">
           <div ng-messages="newActivityForm.start.$error" ng-if="newActivityForm.start.$touched">
             <span class="assertive" ng-message="required">This field is required.</span>
           </div>
@@ -22,7 +24,9 @@
         <label class="item item-input item-stacked-label">
           <span class="input-label">End</span>
           <input type="datetime-local" name="end" required min="{{activityControl.activity.start}}"
-                 ng-model="activityControl.activity.end" placeholder="yyyy-mm-dd hh:mm">
+                 ng-model="activityControl.activity.end"
+                 on-tap="activityControl.pickDatetime(activityControl.activity.start)"
+                 placeholder="dd-mm-yyyy hh:mm">
           <div ng-messages="newActivityForm.end.$error" ng-if="newActivityForm.end.$touched && newActivityForm.start.$touched">
             <span class="assertive" ng-message="required">This field is required.</span>
             <span class="assertive" ng-message="min">End should be after start.</span>
