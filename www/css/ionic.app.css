@@ -16,7 +16,7 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 .new-button {
-  padding: 1%; }
+  padding: 16px !important; }
 
 /*!
   Ionicons, v2.0.1

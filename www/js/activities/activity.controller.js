@@ -31,7 +31,7 @@
         date: Date.parse(current),
         mode: 'datetime',
         minuteInterval: 5
-      }
+      };
       $cordovaDatePicker.show(options);
     }
   }

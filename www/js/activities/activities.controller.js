@@ -12,6 +12,7 @@
     vm.newActivity = newActivity;
     vm.deleteActivity = deleteActivity;
     vm.confirmDelete = confirmDelete;
+    //vm.doRefresh = doRefresh;
 
     function editActivity(id) {
       $ionicPopup.alert({
@@ -21,9 +22,6 @@
     }
 
     function newActivity() {
-      $ionicPopup.alert({
-        template: 'In new activity'
-      });
       $state.go('timetomove.newactivity');
     }
 
@@ -39,8 +37,8 @@
         template: 'Are you sure you want to delete \'' + activity.type + '\'?'
       });
 
-      confirmPopup.then(function(res) {
-        if(res) {
+      confirmPopup.then(function (res) {
+        if (res) {
           console.log('Delete activity');
           deleteActivity(activity.id);
         } else {
@@ -48,5 +46,16 @@
         }
       });
     }
+
+    //function doRefresh() {
+    //  ActivitiesFactory.query().$promise.then(
+    //    function(activities) {
+    //      $ionicPopup.alert({
+    //        template: 'in then'
+    //      });
+    //      vm.activities = activities;
+    //      vm.$broadcast('scroll.refreshComplete');
+    //    });
+    //}
   }
 })();

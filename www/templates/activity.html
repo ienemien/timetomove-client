@@ -15,7 +15,7 @@
           <span class="input-label">Start</span>
           <input type="datetime-local" name="start" required
                  ng-model="activityControl.activity.start"
-                 on-tap="activityControl.pickDatetime(activityControl.activity.start)"
+                 ng-click="activityControl.pickDatetime(activityControl.activity.start)"
                  placeholder="dd-mm-yyyy hh:mm">
           <div ng-messages="newActivityForm.start.$error" ng-if="newActivityForm.start.$touched">
             <span class="assertive" ng-message="required">This field is required.</span>
@@ -25,7 +25,7 @@
           <span class="input-label">End</span>
           <input type="datetime-local" name="end" required min="{{activityControl.activity.start}}"
                  ng-model="activityControl.activity.end"
-                 on-tap="activityControl.pickDatetime(activityControl.activity.start)"
+                 ng-click="activityControl.pickDatetime(activityControl.activity.start)"
                  placeholder="dd-mm-yyyy hh:mm">
           <div ng-messages="newActivityForm.end.$error" ng-if="newActivityForm.end.$touched && newActivityForm.start.$touched">
             <span class="assertive" ng-message="required">This field is required.</span>
@@ -48,9 +48,9 @@
         <div class="new-button">
           <button class="button button-outline button-energized icon-left ion-plus"
                   ng-disabled="newActivityForm.$invalid"
-                  on-tap="activityControl.saveOrUpdate(activityControl.activity)">Save</button>
+                  ng-click="activityControl.saveOrUpdate(activityControl.activity)">Save</button>
           <button class="button button-outline button-calm icon-left ion-plus"
-                  on-tap="activityControl.cancel()">Cancel</button>
+                  ng-click="activityControl.cancel()">Cancel</button>
         </div>
       </form>
     </div>

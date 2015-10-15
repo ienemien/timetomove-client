@@ -1,4 +1,10 @@
 {
   "name": "timetomove",
-  "app_id": "1c719ad0"
+  "app_id": "1c719ad0",
+  "proxies": [
+      {
+        "path": "/api",
+        "proxyUrl": "http://localhost:8080/api"
+      }
+    ]
 }

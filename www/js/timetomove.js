@@ -5,8 +5,12 @@
   angular.module('timetomove', ['ionic', 'ngResource', 'ngMessages', 'ngCordova'])
 
     .constant('ApiEndpoint', {
-      url: 'http://localhost:8080/api'
+      url: ''
     })
+
+    //.constant('ApiEndpoint', {
+    //  url: 'http://localhost:8080'
+    //})
 
     .run(function ($ionicPlatform) {
       $ionicPlatform.ready(function () {
