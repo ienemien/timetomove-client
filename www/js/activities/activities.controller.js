@@ -24,16 +24,21 @@
     function init() {
       ActivitiesFactory.query(function success(data){
         vm.activities = data;
+      }, function error(){
+        $ionicPopup.alert({
+          template: 'Could not retrieve activities, try again later.'
+        })
       });
       IntensitiesFactory.query(function success(data){
         vm.intensities = data;
+      }, function error(){
+        $ionicPopup.alert({
+          template: 'Could not retrieve activities, try again later.'
+        })
       });
     }
 
     function saveOrUpdate(activity) {
-      //$ionicPopup.alert({
-      //  template: 'In save or update activity'
-      //});
       if (activity.id) {
         ActivitiesFactory.update(activity, function success(){
           updateActivityInList(activity);
@@ -52,7 +57,7 @@
           });
         });
       }
-      $state.transitionTo('timetomove.activities.all', {}, {reload: true, inherit: false, notify: true});
+      $state.transitionTo('timetomove.activities.all');
     }
 
     function updateActivityInList(changedActivity){
@@ -61,7 +66,7 @@
     }
 
     function cancel() {
-      $state.go('timetomove.activities.all', null, {reload: true, inherit: false, notify: true});
+      $state.go('timetomove.activities.all');
     }
 
     function pickDatetime(current) {
@@ -108,8 +113,14 @@
     }
 
     function doRefresh() {
-      $state.transitionTo($state.current, {}, {reload: true, inherit: false, notify: true});
-      $scope.$broadcast('scroll.refreshComplete');
+      ActivitiesFactory.query(function success(data){
+        vm.activities = data;
+        $scope.$broadcast('scroll.refreshComplete');
+      }, function error(){
+        $ionicPopup.alert({
+          template: 'Could not retrieve activities, try again later.'
+        })
+      });
     }
   }
 })();

@@ -1,5 +1,9 @@
 <ion-view view-title="Activities">
   <ion-content>
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="activitiesControl.doRefresh()">
+    </ion-refresher>
     <div id="activity-views" ui-view></div>
   </ion-content>
 </ion-view>
