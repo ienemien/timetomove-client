@@ -44,7 +44,13 @@
         });
       }
       else {
-        ActivitiesFactory.save(activity);
+        ActivitiesFactory.save(activity, function success(){
+          vm.activities.push(activity);
+        }, function error(){
+          $ionicPopup.alert({
+            template: 'Oops, something went wrong...'
+          });
+        });
       }
       $state.transitionTo('timetomove.activities.all', {}, {reload: true, inherit: false, notify: true});
     }
@@ -73,12 +79,18 @@
     }
 
     function newActivity() {
-      $state.go('timetomove.newactivity');
+      $state.go('timetomove.activities.new');
     }
 
-    function deleteActivity(id) {
-      ActivitiesFactory.delete({id: id});
-      $state.transitionTo($state.current, {}, {reload: true, inherit: false, notify: true});
+    function deleteActivity(activity) {
+      ActivitiesFactory.delete({id: activity.id}, function success(){
+        var index = vm.activities.indexOf(activity);
+        vm.activities.splice(index, 1);
+      }, function error(){
+        $ionicPopup.alert({
+          template: 'Oops, something went wrong...'
+        });
+      });
     }
 
     function confirmDelete(activity) {
@@ -90,7 +102,7 @@
 
       confirmPopup.then(function (res) {
         if (res) {
-          deleteActivity(activity.id);
+          deleteActivity(activity);
         }
       });
     }
