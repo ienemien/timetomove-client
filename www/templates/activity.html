@@ -1,58 +1,57 @@
-<ion-view view-title="Activity">
-  <ion-content>
-    <div class="list">
-      <form name="newActivityForm">
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Type of activity</span>
-          <input type="text" name="activitytype" required ng-minlength="3" ng-maxlength="60" ng-model="activityControl.activity.type" />
-          <div ng-messages="newActivityForm.activitytype.$error" ng-if="newActivityForm.activitytype.$touched">
-            <span class="assertive" ng-message="required">This field is required.</span>
-            <span class="assertive" ng-message="minlength">Activity type must be at least 3 characters long.</span>
-            <span class="assertive" ng-message="maxlength">Activity type must be at most 60 characters long.</span>
-          </div>
-        </label>
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Start</span>
-          <input type="datetime-local" name="start" required
-                 ng-model="activityControl.activity.start"
-                 ng-click="activityControl.pickDatetime(activityControl.activity.start)"
-                 placeholder="dd-mm-yyyy hh:mm">
-          <div ng-messages="newActivityForm.start.$error" ng-if="newActivityForm.start.$touched">
-            <span class="assertive" ng-message="required">This field is required.</span>
-          </div>
-        </label>
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">End</span>
-          <input type="datetime-local" name="end" required min="{{activityControl.activity.start}}"
-                 ng-model="activityControl.activity.end"
-                 ng-click="activityControl.pickDatetime(activityControl.activity.start)"
-                 placeholder="dd-mm-yyyy hh:mm">
-          <div ng-messages="newActivityForm.end.$error" ng-if="newActivityForm.end.$touched && newActivityForm.start.$touched">
-            <span class="assertive" ng-message="required">This field is required.</span>
-            <span class="assertive" ng-message="min">End should be after start.</span>
-          </div>
-        </label>
-        <label class="item item-input item-select">
+<div class="list">
+  <form name="newActivityForm">
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Type of activity</span>
+      <input type="text" name="activitytype" required ng-minlength="3" ng-maxlength="60"
+             ng-model="activitiesControl.currentActivity.type"/>
+    </label>
+    <div ng-messages="newActivityForm.activitytype.$error" ng-if="newActivityForm.activitytype.$touched">
+      <span class="assertive" ng-message="required">This field is required.</span>
+      <span class="assertive" ng-message="minlength">Activity type must be at least 3 characters long.</span>
+      <span class="assertive" ng-message="maxlength">Activity type must be at most 60 characters long.</span>
+    </div>
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Start</span>
+      <input type="datetime-local" name="start" required
+             ng-model="activitiesControl.currentActivity.start"
+             ng-click="activitiesControl.pickDatetime(activitiesControl.currentActivity.start)"
+             placeholder="dd-mm-yyyy hh:mm">
+    </label>
+    <div ng-messages="newActivityForm.start.$error" ng-if="newActivityForm.start.$touched">
+      <span class="assertive" ng-message="required">This field is required.</span>
+    </div>
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">End</span>
+      <input type="datetime-local" name="end" required min="{{activitiesControl.currentActivity.start}}"
+             ng-model="activitiesControl.currentActivity.end"
+             ng-click="activitiesControl.pickDatetime(activitiesControl.currentActivity.start)"
+             placeholder="dd-mm-yyyy hh:mm">
+    </label>
+    <div ng-messages="newActivityForm.end.$error"
+         ng-if="newActivityForm.end.$touched && newActivityForm.start.$touched">
+      <span class="assertive" ng-message="required">This field is required.</span>
+      <span class="assertive" ng-message="min">End should be after start.</span>
+    </div>
+    <label class="item item-input item-select">
           <span class="input-label">
             Intensity
           </span>
-          <select name="intensity" required ng-model="activityControl.activity.intensity.code">
-            <option value="HIGH">High</option>
-            <option value="MEDIUM" selected>Medium</option>
-            <option value="LOW">Low</option>
-          </select>
-          <div ng-messages="newActivityForm.intensity.$error" ng-if="newActivityForm.intensity.$touched">
-            <span class="assertive" ng-message="required">This field is required.</span>
-          </div>
-        </label>
-        <div class="new-button">
-          <button class="button button-outline button-energized icon-left ion-plus"
-                  ng-disabled="newActivityForm.$invalid"
-                  ng-click="activityControl.saveOrUpdate(activityControl.activity)">Save</button>
-          <button class="button button-outline button-calm icon-left ion-plus"
-                  ng-click="activityControl.cancel()">Cancel</button>
-        </div>
-      </form>
+      <select  name="intensity" ng-model="activitiesControl.currentActivity.intensity" ng-options="intensity as intensity.description for intensity in activitiesControl.intensities track by intensity.code" required>
+      </select>
+    </label>
+    <div ng-messages="newActivityForm.intensity.$error" ng-if="newActivityForm.intensity.$touched">
+      <span class="assertive" ng-message="required">This field is required.</span>
     </div>
-  </ion-content>
-</ion-view>
+
+    <div class="new-button">
+      <button class="button button-outline button-energized icon-left ion-plus"
+              ng-disabled="newActivityForm.$invalid"
+              ng-click="activitiesControl.saveOrUpdate(activitiesControl.currentActivity)">Save
+      </button>
+      <button class="button button-outline button-calm icon-left ion-plus"
+              ng-click="activitiesControl.cancel()">Cancel
+      </button>
+    </div>
+  </form>
+</div>
+

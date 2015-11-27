@@ -1,22 +1,5 @@
 <ion-view view-title="Activities">
   <ion-content>
-    <!--<ion-refresher on-refresh="activitiesControl.doRefresh()"></ion-refresher>-->
-    <div class="list" >
-      <ion-item ng-if="activitiesControl.activities && activitiesControl.activities.length"
-                ng-repeat="activity in activitiesControl.activities">
-        <h2>{{activity.type}}</h2>
-        <p></p>
-        <p>{{activity.start | date:'dd/MM/yyyy HH:mm'}} - {{activity.end | date:'dd/MM/yyyy HH:mm'}}</p>
-        <p>{{activity.intensity.description}}</p>
-        <button class="button button-small button-assertive icon ion-trash-a" ng-click="activitiesControl.confirmDelete(activity)"></button>
-        <button class="button button-small button-positive icon ion-edit" ng-click="activitiesControl.editActivity(activity.id)"></button>
-      </ion-item>
-      <ion-item ng-if="activitiesControl.activities && !activitiesControl.activities.length">
-        No activities found, time to move!
-    </div>
-    <div class="new-button">
-      <button type="button" class="button button-outline button-positive icon-left ion-plus "
-              ng-click="activitiesControl.newActivity()">New</button>
-    </div>
+    <div id="activity-views" ui-view></div>
   </ion-content>
 </ion-view>

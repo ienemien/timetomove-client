@@ -56,51 +56,32 @@
           }
         })
 
+        /***** ACTIVITIES *****/
         .state('timetomove.activities', {
           url: '/activities',
           views: {
             'menuContent': {
               templateUrl: 'templates/activities.html',
-              controller: 'ActivitiesCtrl as activitiesControl',
-              resolve: {
-                activities: function (ActivitiesFactory) {
-                  return ActivitiesFactory.query();
-                }
-              }
+              controller: 'ActivitiesCtrl as activitiesControl'
             }
           }
         })
 
-        .state('timetomove.editactivity', {
-          url: '/activities/edit/:id',
-          views: {
-            'menuContent': {
-              templateUrl: 'templates/activity.html',
-              controller: 'ActivityCtrl as activityControl',
-              resolve: {
-                activity: function ($stateParams, ActivitiesFactory) {
-                  return ActivitiesFactory.get({id: $stateParams.id});
-                }
-              }
-            }
-          }
+        .state('timetomove.activities.all', {
+          url: '/all',
+          templateUrl: 'templates/activities-all.html'
         })
 
-        .state('timetomove.newactivity', {
-          url: '/activities/new',
-          views: {
-            'menuContent': {
-              templateUrl: 'templates/activity.html',
-              controller: 'ActivityCtrl as activityControl'
-            }
-          },
-          resolve: {
-            activity: function () {
-              return {};
-            }
-          }
+        .state('timetomove.activities.single', {
+          url: '/edit',
+          templateUrl: 'templates/activity.html'
+        })
+
+        .state('timetomove.activities.new', {
+          url: '/new',
+          templateUrl: 'templates/activity.html'
         });
 
-      $urlRouterProvider.otherwise('/timetomove/activities');
+      $urlRouterProvider.otherwise('/timetomove/activities/all');
     });
 })();
